@@ -17,23 +17,24 @@ GET /switches
 < 200
 < Content-Type: application/json
 { "items": [
-{ "id": "1", url": "/switches/1", "name": "Lamp 1", "script": "sendRev.sh", "command": "B 1", "status": "0"}
+{ "id": "0", "url": "/switches/0", "name": "Lamp 1", "script": "send", "command": "B 1", "status": "0"},
+{ "id": "1", "url": "/switches/1", "name": "Lamp 2", "script": "send", "command": "B 2", "status": "0"}
 ] }
 
 Save new switch configurations
 POST /switches
 > Content-Type: application/json
-{ "name": "Lamp 1", "script": "sendRev.sh", "command":"B 1" }
+{ "name": "Lamp 1", "script": "send", "command":"B 1" }
 < 200
 
 Update switch status
 PUT /switches/1
 > Content-Type: application/json
-{ "id": "1", "status": "1" }
+{ "id": "0", "status": "1" }
 < 200
 
 Delete switch configuration
 DELETE /switches/1
 > Content-Type: application/json
-{ "id": "1" }
+{ "id": "0" }
 < 200
