@@ -73,7 +73,6 @@ function switchStatus(script, command, status){
     var execString = script + " " + command + " " + status;
     console.log("Executing: " + execString);
     exec(execString, puts);
-
 }
 
 function puts(error, stdout, stderr) { 
