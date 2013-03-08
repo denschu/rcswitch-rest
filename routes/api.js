@@ -1,6 +1,7 @@
 //execute commands
 var util = require('util')
 var exec = require('child_process').exec;
+var sleep = require('sleep');
 
 var data = [
     {
@@ -56,6 +57,18 @@ exports.editSwitch = function (req, res) {
   }
 };
 
+// PUT
+exports.editAllSwitches = function (req, res) {
+  console.log('Switch Status of all switches to ' + req.body.status);
+  for (var i=0;i<data.length;i++){ 
+    var script = data[i].script;
+    var command = data[i].command;
+    switchStatus(script,command,req.body.status);
+    data[i].status = req.body.status;
+  }
+  res.send(200);
+};
+
 // DELETE
 exports.deleteSwitch = function (req, res) {
   var id = req.params.id;
@@ -73,6 +86,7 @@ function switchStatus(script, command, status){
     var execString = script + " " + command + " " + status;
     console.log("Executing: " + execString);
     exec(execString, puts);
+    sleep.sleep(1)//sleep for 1 seconds
 }
 
 function puts(error, stdout, stderr) { 

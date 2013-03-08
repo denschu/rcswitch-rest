@@ -35,6 +35,7 @@ app.get('/switches', api.switches);
 app.get('/switches/:id', api.switch);
 app.post('/switches', api.addSwitch);
 app.put('/switches/:id', api.editSwitch);
+app.put('/switches', api.editAllSwitches);
 app.delete('/switches/:id', api.deleteSwitch);
 
 // Start server
